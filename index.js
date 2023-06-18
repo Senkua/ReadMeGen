@@ -89,12 +89,12 @@ inquirer
       message: 'Enter your email address:',
     },
   ])
-  .then((answers) => {
+  .then(function (answers) {
     // Generate the README content
     const readmeContent = generateREADME(answers);
 
     // Write the README file
-    fs.writeFile('README.md', readmeContent, (err) => {
+    fs.writeFile('README.md', readmeContent, function (err) {
       if (err) {
         console.error(err);
       } else {
@@ -102,6 +102,7 @@ inquirer
       }
     });
   })
-  .catch((error) => {
+  .catch(function (error) {
     console.error(error);
   });
+
