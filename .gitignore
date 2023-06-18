@@ -1,2 +1,2 @@
-# Ignore node_modules folder
+# Ignore node_modules folder (I forgot to add this at the start of the project, I will be sure to add it next time!)
 node_modules
