@@ -3,12 +3,10 @@ const fs = require('fs');
 
 // Function to generate the README content
 function generateREADME(answers) {
-  return `
-# ${answers.title}
+  let tableOfContents = '';
 
-## Description
-${answers.description}
-
+  if (answers.includeTableOfContents === 'Yes') {
+    tableOfContents = `
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
@@ -16,6 +14,16 @@ ${answers.description}
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [Questions](#questions)
+`;
+  }
+
+  return `
+# ${answers.title}
+
+## Description
+${answers.description}
+
+${tableOfContents}
 
 ## Installation
 ${answers.installation}
@@ -88,6 +96,12 @@ inquirer
       name: 'email',
       message: 'Enter your email address:',
     },
+    {
+      type: 'list',
+      name: 'includeTableOfContents',
+      message: 'Do you want to include a Table of Contents?',
+      choices: ['Yes', 'No'],
+    },
   ])
   .then(function (answers) {
     // Generate the README content
@@ -105,4 +119,3 @@ inquirer
   .catch(function (error) {
     console.error(error);
   });
-
